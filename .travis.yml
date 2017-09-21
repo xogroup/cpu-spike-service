@@ -1,0 +1,21 @@
+sudo: required
+language: node_js
+node_js:
+- '8'
+- node
+sudo: required
+services:
+- docker
+before_install:
+- npm install -g npm@'>=2.13.5'
+script:
+- npm test
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "$TRAVIS_TAG" ]; then
+    docker build -t xogroup/cpu-spike-service:latest -t xogroup/cpu-spike-service:$TRAVIS_TAG .;
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push xogroup/cpu-spike-service;
+    echo "Built to DockerHub";
+    else
+    echo "Skipping deployment with the dockerhub provider because this is not a tagged commit";
+    fi
