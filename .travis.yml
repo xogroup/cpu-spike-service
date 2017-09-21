@@ -3,17 +3,15 @@ language: node_js
 node_js:
 - '8'
 - node
-sudo: required
 services:
 - docker
 before_install:
 - npm install -g npm@'>=2.13.5'
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "$TRAVIS_TAG" ]; then
-    docker build -t xogroup/cpu-spike-service:latest -t xogroup/cpu-spike-service:$TRAVIS_TAG .;
-    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push xogroup/cpu-spike-service;
-    echo "Built to DockerHub";
-    else
-    echo "Skipping deployment with the dockerhub provider because this is not a tagged commit";
-    fi
+- if [ "$TRAVIS_BRANCH" == "$TRAVIS_TAG" ]; then docker build -t xogroup/cpu-spike-service:latest
+  -t xogroup/cpu-spike-service:$TRAVIS_TAG .; docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  docker push xogroup/cpu-spike-service; echo "Built to DockerHub"; else echo "Skipping
+  deployment with the dockerhub provider because this is not a tagged commit"; fi
+notifications:
+  slack:
+    secure: NyRhQf0sZV6BB8JKOzUFjsbz6HKZZO1oVRh2WA4tEt7u9FOI6hwzpX5jLIceWaQxBtc+srlgxiLAxIFx2b+QuFMQYOH8hEk4GibN5+QzSxFzG2BKlx9rjBeHRRc4urng8NHUB4iFQrCEwdCQAx5NKXdExO65rxQAhvtUW/0esrnJ5N63fQdY/4emJa5/E1BrmLHFL850mlHpPrZsVhXFDFkqFjw3kQaF9hMuivMpO7s1BlOlJxfpQqd7D4ozoNcTKseqgp32OvXmt/QhQY2WvMFIVVXg/fH8BvZPXaBO3bhKoxLXfDTBAEj09zLdPJpj8manNzRV/DmBFjS+f1JD1AzaHXuOZ8iFykA6CabBnhpX9H3TK0bN+mjlVNPSE3XZ+/x2kkcLYJDhtAbr+xoNAW01Hj5cep8KQ1pPZoAHtMrmS8wnjI5Z7SZgAx1oLj2Pp+ZjSB3VfDLuWTBkNbhFR5TpiZyTRz3RYlADHcRUmfxHcrg+F/rDg32laQQJ5xO6JvnvGBVvBfwjt6Mq9Fydfiul0wW070x4lnyR24F222b+6MKhEdjpRw2s5Ti7qYiHRnzjzqaQcjFViGacBgP4QjETvj8BkixiBw8jhHKszYB5/vqjRUATIXrtJZvG3Otifm5GxuI8aV89bkSmSLfQ569ew4lgjK6EYbquMMlxl5I=
