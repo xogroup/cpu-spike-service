@@ -2,7 +2,7 @@ FROM mhart/alpine-node:8
 
 MAINTAINER Lam Chan (lchan@xogrp.com)
 
-CMD [ "node", "fibo.js", "10000" ]
+CMD [ "node", "index.js" ]
 
 EXPOSE 8080
 
