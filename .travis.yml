@@ -8,8 +8,6 @@ services:
 - docker
 before_install:
 - npm install -g npm@'>=2.13.5'
-script:
-- npm test
 after_success:
   - if [ "$TRAVIS_BRANCH" == "$TRAVIS_TAG" ]; then
     docker build -t xogroup/cpu-spike-service:latest -t xogroup/cpu-spike-service:$TRAVIS_TAG .;

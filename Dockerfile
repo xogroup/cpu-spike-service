@@ -4,6 +4,8 @@ MAINTAINER Lam Chan (lchan@xogrp.com)
 
 CMD [ "node", "fibo.js", "10000" ]
 
+EXPOSE 8080
+
 WORKDIR /opt/app
 
 COPY ./ /opt/app
