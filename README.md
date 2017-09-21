@@ -1,6 +1,8 @@
 # cpu-spike-service
 A web server to help stress cpu.
 
+[![Build Status](https://travis-ci.org/xogroup/cpu-spike-service.svg?branch=master)](https://travis-ci.org/xogroup/cpu-spike-service)
+
 Lead Maintainer: [Lam Chan](https://github.com/lamchakchan)
 
 ## Description
