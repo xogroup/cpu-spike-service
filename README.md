@@ -1,5 +1,5 @@
 # cpu-spike-service
-A web server to help stress cpu.
+A web server to stress cpu.
 
 [![Build Status](https://travis-ci.org/xogroup/cpu-spike-service.svg?branch=master)](https://travis-ci.org/xogroup/cpu-spike-service)
 
@@ -10,18 +10,12 @@ A web server that scales up cpu usage on demand.  Contains an endpoint to take i
 
 ## Installation
 
-Or using Docker
 ```
 docker pull xogroup/cpu-spike-service
 ```
 
 ## Usage
 
-```
-helm-chart-publisher
-```
-
-Or using Docker
 ```
 docker run -d -p 8080:8080 xogroup/cpu-spike-service
 ```
